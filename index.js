@@ -32,9 +32,9 @@ const atg = async () => {
             // const user = {"username":"ojit3", "email":"ojit@gmail.com", "password":"1234567"};
             const user = req.body;
 
-            const existUsername = await usersData.findOne({ username: user.username });
+            const existUsername = await usersData.findOne({ username: user.username, email: user.email });
             if (existUsername) {
-                return res.send({ message: "This username available" })
+                return res.send({ message: "This user available" })
             }
 
             const result = await usersData.insertOne(user);
